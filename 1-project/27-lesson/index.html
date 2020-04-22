@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <button @click="changeLink">Click to change link</button>
+            <a :href="link">Link</a>
+        </div>
+        <script>
+            new Vue({
+                el: '#app',
+                data: {
+                    link: 'https://google.com'
+                },
+                methods: {
+                    changeLink: function(){
+                        this.link = 'https://apple.com'
+                    }
+                }
+            });
+        </script>
+    </body>
+</html>
