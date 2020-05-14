@@ -1,0 +1,57 @@
+<html>
+    <head>
+        <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id="app1">
+            <h1 ref="heading">{{ title }}</h1>
+            <button v-on:click="show" ref="myButton">Show Paragraph</button>
+            <p v-if="showParagraph">This is not always visible</p>
+            <hello></hello>
+            <hello></hello>
+        </div>
+        <div id="app2">
+            <h1>abahahahah</h1>
+            <h2>ajajajaja</h2>
+        </div>
+        <script>
+            Vue.component('hello', {
+                    template: "<h1>Sono un componente</h1>"
+            });
+
+            var vm1 = new Vue({
+                    data: {
+                        title: 'The VueJS Instance',
+                        showParagraph: false
+                    },
+                    methods: {
+                        show: function () {
+                            this.showParagraph = true;
+                            this.updateTitle('The VueJS Instance (Updated)');
+                            console.log(this.$refs);
+                        },
+                        updateTitle: function (title) {
+                            this.title = title;
+                        }
+                    },
+                    computed: {
+                        lowercaseTitle: function () {
+                            return this.title.toLowerCase();
+                        }
+                    },
+                    watch: {
+                        title: function (value) {
+                            alert('Title changed, new value: ' + value);
+                        }
+                    }
+                });
+
+            vm1.$mount('#app1');
+
+            var vm2 = new Vue({
+                el: "#app2",
+                template:"<h1>Sono un template vue</h1>"
+            });
+        </script>
+    </body>
+</html>
