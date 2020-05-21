@@ -8,6 +8,8 @@
 </template>
 
 <script>
+    import { eventBus } from '../main'
+
     export default {
         props:{
             userAge: Number
@@ -15,7 +17,9 @@
         methods: {
             editAge() {
                 this.userAge = 30
-                this.$emit('ageEdited', this.userAge)
+                // this.$emit('ageEdited', this.userAge)
+                // eventBus.$emit('ageEdited', this.userAge) //con eventBus
+                eventBus.changeName(this.userAge) //con codice nell'eventBus
             }
         }
     }
