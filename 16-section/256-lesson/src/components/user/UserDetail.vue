@@ -26,6 +26,13 @@
                     hash: '#data' 
                 }
             }
+        },
+        beforeRouteEnter (to, from, next) {
+            console.log('inside component');
+            next(vm => {
+                console.log(vm.link)
+            });
         }
+
     }
 </script>
